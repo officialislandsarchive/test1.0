@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Theme Changer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Change Image Theme Color</h1>
+        <div class="image-container">
+            <img id="themeImage" src="purple_image.png" alt="Theme Image">
+            <div class="overlay" id="colorOverlay"></div>
+            <img id="eyeImage" src="eye_image.png" alt="Eyes" class="eyes">
+        </div>
+        <div class="color-picker">
+            <label for="colorInput">Pick a color: </label>
+            <input type="color" id="colorInput" value="#ff6600">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
