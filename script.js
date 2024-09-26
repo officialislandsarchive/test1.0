@@ -1,32 +1,18 @@
-const canvas = document.getElementById('imageCanvas');
-const ctx = canvas.getContext('2d');
+const colorInput = document.getElementById('colorInput');
+const colorOverlay = document.getElementById('colorOverlay');
+const themeImage = document.getElementById('themeImage');
 
-const baseImage = new Image();
-baseImage.src = 'flamelet_image.png';
+colorInput.addEventListener('input', function () {
+    const selectedColor = colorInput.value;
+    colorOverlay.style.backgroundColor = selectedColor;
+});
 
-const eyeImage = new Image();
-eyeImage.src = 'the_eyes.png'; 
-
-baseImage.onload = function() {
-    canvas.width = baseImage.width;
-    canvas.height = baseImage.height;
-
-    drawImageWithColor();
-};
-
-function drawImageWithColor() {
-    ctx.drawImage(baseImage, 0, 0, canvas.width, canvas.height);
-
-    const color = document.getElementById('colorInput').value;
-
-    ctx.globalCompositeOperation = 'source-atop';
-    ctx.fillStyle = color;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ctx.globalCompositeOperation = 'source-over';
-    ctx.drawImage(eyeImage, 0, 0, canvas.width, canvas.height);
-}
-
-document.getElementById('colorInput').addEventListener('input', function() {
-    drawImageWithColor();
+themeImage.addEventListener('click', function() {
+    html2canvas(document.querySelector('.image-container')).then(canvas => {
+        canvas.toBlob(function(blob) {
+            const item = new ClipboardItem({'image/png': blob});
+            navigator.clipboard.write([item]);
+            alert('Image copied to clipboard!');
+        });
+    });
 });
