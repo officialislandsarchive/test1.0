@@ -19,7 +19,7 @@ function drawImageWithColor() {
 
     const color = document.getElementById('colorInput').value;
 
-    ctx.globalCompositeOperation = 'source-atop'; // Blend mode
+    ctx.globalCompositeOperation = 'source-atop';
     ctx.fillStyle = color;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
